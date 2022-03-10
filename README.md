@@ -1,6 +1,9 @@
 # Bevy Experiments
 Experiments using [Rust](https://www.rust-lang.org) and [Bevy](https://bevyengine.org).
 
+## Code
++ [`bevy-hello`](https://github.com/keithsharp/bevy-experiments/tree/main/bevy-hello) - code created while working through the [Bevy Book](https://bevyengine.org/learn/book/introduction/).
+
 # Copyright and License
 Copyright 2022, Keith Sharp, kms@passback.co.uk.
 
