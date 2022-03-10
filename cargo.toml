@@ -1,0 +1,6 @@
+[workspace]
+resolver = "2" # Needed for bevy/wgpu
+
+members = [
+    "bevy-hello",
+]
