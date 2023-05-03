@@ -1,5 +1,14 @@
 use bevy::prelude::*;
 
+use std::f32::consts::PI;
+
+const FULL_TURN: f32 = 2.0 * PI;
+
+#[derive(Component)]
+struct Rotatable {
+    speed: f32,
+}
+
 fn main() {
     App::new()
         .insert_resource(Msaa { samples: 4 })
@@ -11,6 +20,7 @@ fn main() {
         })
         .add_plugins(DefaultPlugins)
         .add_startup_system(setup)
+        .add_system(rotate_cube)
         .run();
 }
 
@@ -29,7 +39,8 @@ fn setup(
         mesh: mesh,
         material: material,
         ..Default::default()
-    });
+    })
+    .insert(Rotatable { speed: 0.3 });
 
     commands.spawn_bundle(PerspectiveCameraBundle {
         transform: Transform::from_xyz(-2., 2.5, 5.)
@@ -38,4 +49,11 @@ fn setup(
     });
 
     commands.spawn_bundle(DirectionalLightBundle { ..Default::default() });
+}
+
+fn rotate_cube(timer: Res<Time>, mut cubes: Query<(&mut Transform, &Rotatable)>) {
+    for (mut transform, cube) in cubes.iter_mut() {
+        let rotation_change = Quat::from_rotation_y(FULL_TURN * cube.speed * timer.delta_seconds());
+        transform.rotate(rotation_change);
+    }
 }
