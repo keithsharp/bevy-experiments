@@ -1,8 +1,9 @@
 [workspace]
 resolver = "2"
 members = [
-    "bevy-hello",
     "bevy-cube",
+    "bevy-hello",
+    "bevy-ws"
 ]
 
 [profile.dev]
@@ -12,4 +13,5 @@ opt-level = 1
 opt-level = 3
 
 [workspace.dependencies]
+anyhow = "1.0.71"
 bevy = { version = "0.10.0", features = ["dynamic_linking"] }
