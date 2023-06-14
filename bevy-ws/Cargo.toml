@@ -16,6 +16,7 @@ anyhow.workspace = true
 axum = { version = "0.6", features = ["headers", "ws"] }
 axum-server = { version = "0.5.1", features = ["tls-rustls"] }
 bevy.workspace = true 
+bevy-tokio-tasks = "0.10.2"
 futures = "0.3.28"
 tokio = { version = "1", features = ["full"] }
 tracing = "0.1.37"
