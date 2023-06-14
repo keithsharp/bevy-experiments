@@ -4,7 +4,7 @@ Experiments using [Rust](https://www.rust-lang.org) and [Bevy](https://bevyengin
 ## Code
 + [`bevy-cube`](https://github.com/keithsharp/bevy-experiments/tree/main/bevy-cube) - drawing a 3d cube in a window.
 + [`bevy-hello`](https://github.com/keithsharp/bevy-experiments/tree/main/bevy-hello) - code created while working through the [Bevy Book](https://bevyengine.org/learn/book/introduction/).
-+ + [`bevy-ws`](https://github.com/keithsharp/bevy-experiments/tree/main/bevy-ws) - talking to a server using WebSockets.
++ [`bevy-ws`](https://github.com/keithsharp/bevy-experiments/tree/main/bevy-ws) - talking to a server using WebSockets.
 
 # Copyright and License
 Copyright 2022, Keith Sharp, kms@passback.co.uk.
