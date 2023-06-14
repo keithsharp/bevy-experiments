@@ -1,7 +1,11 @@
 [package]
 name = "bevy-hello"
-version = "0.1.0"
-edition = "2021"
+description = "Code created while working through the Bevy Book"
+
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+version.workspace = true
 
 [dependencies]
-bevy = { workspace = true }
+bevy.workspace = true

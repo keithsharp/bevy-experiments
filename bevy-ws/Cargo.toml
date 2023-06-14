@@ -1,7 +1,11 @@
 [package]
 name = "bevy-ws"
-version = "0.1.0"
-edition = "2021"
+description = "Talking to a server using WebSockets"
+
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+version.workspace = true
 
 [[bin]]
 name = "client"
@@ -12,7 +16,7 @@ name = "server"
 path = "src/server.rs"
 
 [dependencies]
-anyhow.workspace = true
+anyhow = "1.0.71"
 axum = { version = "0.6", features = ["headers", "ws"] }
 axum-server = { version = "0.5.1", features = ["tls-rustls"] }
 bevy.workspace = true 

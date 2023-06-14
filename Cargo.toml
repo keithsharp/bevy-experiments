@@ -6,6 +6,13 @@ members = [
     "bevy-ws"
 ]
 
+[workspace.package]
+authors = ["Keith Sharp <kms@passback.co.uk"]
+description = "Experiments in learning Rust with the Bevy Game Engine"
+license = "AGPL-3.0-or-later"
+version = "0.1.0"
+edition = "2021"
+
 [profile.dev]
 opt-level = 1
 
@@ -13,5 +20,4 @@ opt-level = 1
 opt-level = 3
 
 [workspace.dependencies]
-anyhow = "1.0.71"
-bevy = { version = "0.10.0", features = ["dynamic_linking"] }
+bevy = { version = "0.10.1", features = ["dynamic_linking"] }
