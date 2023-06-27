@@ -7,6 +7,9 @@ use axum::Router;
 
 use futures::{sink::SinkExt, stream::StreamExt};
 
+use rand::rngs::StdRng;
+use rand::{Rng, SeedableRng};
+
 use tracing::debug;
 use tracing::error;
 use tracing::info;
@@ -41,6 +44,8 @@ async fn websocket_handler(stream: WebSocket) {
     debug!("Got a WebSocket connection");
     let (mut ws_tx, mut ws_rx) = stream.split();
 
+    let mut rng = StdRng::seed_from_u64(0);
+
     while let Some(message) = ws_rx.next().await {
         match message {
             Ok(message) => match message {
@@ -55,9 +60,25 @@ async fn websocket_handler(stream: WebSocket) {
                     debug!("Got a connection close message");
                     break;
                 }
+                Message::Text(text) => {
+                    debug!("Message: {}", text);
+                    ws_tx
+                        .send(Message::Text("Thank you for your message".to_string()))
+                        .await
+                        .unwrap()
+                }
                 message => debug!("Got an unhandled message type: {:?}", message),
             },
             Err(e) => error!("Error reading from WebSocket: {}", e),
+        }
+
+        // 1 in 10 chance of sending a message to client.
+        if rng.gen::<f32>() > 0.1 {
+            debug!("Sending message to client");
+            ws_tx
+                .send(Message::Text("Message from the server".to_string()))
+                .await
+                .unwrap();
         }
     }
 
