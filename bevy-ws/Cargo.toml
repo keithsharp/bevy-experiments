@@ -20,7 +20,7 @@ anyhow = "1.0.71"
 axum = { version = "0.6", features = ["headers", "ws"] }
 axum-server = { version = "0.5.1", features = ["tls-rustls"] }
 bevy.workspace = true 
-bevy-tokio-tasks = "0.10.2"
+bevy-tokio-tasks = { git = "https://github.com/keithsharp/bevy-tokio-tasks.git" }
 crossbeam-channel = "0.5.0"
 futures = "0.3.28"
 rand = "0.8.5"

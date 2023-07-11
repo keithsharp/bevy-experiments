@@ -14,15 +14,15 @@ pub struct HelloPlugin;
 impl Plugin for HelloPlugin {
     fn build(&self, app: &mut App) {
         app.insert_resource(GreetTimer(Timer::from_seconds(2.0, TimerMode::Repeating)))
-            .add_startup_system(add_people)
-            .add_system(greet_people);
+            .add_systems(Startup, add_people)
+            .add_systems(Update, greet_people);
     }
 }
 
 fn main() {
     App::new()
         .add_plugins(DefaultPlugins)
-        .add_plugin(HelloPlugin)
+        .add_plugins(HelloPlugin)
         .run();
 }
 

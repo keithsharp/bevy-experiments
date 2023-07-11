@@ -17,8 +17,8 @@ fn main() {
             }),
             ..default()
         }))
-        .add_startup_system(setup)
-        .add_system(rotate_cube)
+        .add_systems(Startup, setup)
+        .add_systems(Update, rotate_cube)
         .run();
 }
 

@@ -19,7 +19,9 @@ enum WebSocketMessage {
     Message(String),
 }
 
+#[derive(Event)]
 struct InboundMessage(String);
+#[derive(Event)]
 struct OutboundMessage(String);
 
 #[derive(Resource, Deref)]
@@ -34,15 +36,15 @@ fn main() -> anyhow::Result<()> {
         .add_event::<InboundMessage>()
         .add_event::<OutboundMessage>()
         .add_plugins(MinimalPlugins)
-        .add_plugin(LogPlugin {
+        .add_plugins(LogPlugin {
             level: Level::DEBUG,
             ..Default::default()
         })
-        .add_plugin(TokioTasksPlugin::default())
-        .add_startup_system(setup_ws_system)
-        .add_system(event_sender)
-        .add_system(event_receiver)
-        .add_system(game_system)
+        .add_plugins(TokioTasksPlugin::default())
+        .add_systems(Startup, setup_ws_system)
+        .add_systems(Update, event_sender)
+        .add_systems(Update, event_receiver)
+        .add_systems(Update, game_system)
         .run();
 
     Ok(())
