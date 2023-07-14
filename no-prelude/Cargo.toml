@@ -1,0 +1,11 @@
+[package]
+name = "no-prelude"
+description = "Rotating cube experiment but without using bevy::prelude::*"
+
+authors.workspace = true
+license.workspace = true
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+bevy.workspace = true
