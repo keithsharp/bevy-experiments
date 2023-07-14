@@ -3,7 +3,8 @@ resolver = "2"
 members = [
     "bevy-cube",
     "bevy-hello",
-    "bevy-ws"
+    "bevy-ws",
+    "fly-cam"
 ]
 
 [workspace.package]

@@ -1,0 +1,12 @@
+[package]
+name = "fly-cam"
+description = "Experimenting with Bevy Fly Cam"
+
+authors.workspace = true
+license.workspace = true
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+bevy.workspace = true
+bevy_flycam ={ git = "https://github.com/etam/bevy_flycam.git", branch = "bevy_0.11" }
