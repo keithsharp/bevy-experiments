@@ -1,3 +1,5 @@
+use bevy::math::primitives::Cuboid;
+use bevy::math::primitives::Plane3d;
 use bevy::prelude::*;
 use bevy::window::WindowResolution;
 
@@ -23,7 +25,7 @@ fn setup(
     mut meshes: ResMut<Assets<Mesh>>,
     mut materials: ResMut<Assets<StandardMaterial>>,
 ) {
-    let mesh = meshes.add(Mesh::from(shape::Cube { size: 1. }));
+    let mesh = meshes.add(Mesh::from(Cuboid::new(1.0, 1.0, 1.0)));
     let material = materials.add(StandardMaterial {
         base_color: Color::RED,
         ..default()
@@ -35,10 +37,7 @@ fn setup(
         ..default()
     });
 
-    let mesh = meshes.add(Mesh::from(shape::Plane {
-        size: 10.0,
-        subdivisions: 1,
-    }));
+    let mesh = meshes.add(Mesh::from(Plane3d::new(Vec3::Y)));
     let material = materials.add(StandardMaterial {
         base_color: Color::GREEN,
         ..default()

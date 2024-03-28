@@ -1,4 +1,6 @@
-use bevy::{prelude::*, window::WindowResolution};
+use bevy::math::primitives::Cuboid;
+use bevy::prelude::*;
+use bevy::window::WindowResolution;
 
 use std::f32::consts::TAU;
 
@@ -27,7 +29,7 @@ fn setup(
     mut meshes: ResMut<Assets<Mesh>>,
     mut materials: ResMut<Assets<StandardMaterial>>,
 ) {
-    let mesh = meshes.add(Mesh::from(shape::Cube { size: 1. }));
+    let mesh = meshes.add(Mesh::from(Cuboid::new(1.0, 1.0, 1.0)));
     let material = materials.add(StandardMaterial {
         base_color: Color::PINK,
         ..default()

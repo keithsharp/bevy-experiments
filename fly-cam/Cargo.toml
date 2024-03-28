@@ -9,4 +9,4 @@ edition.workspace = true
 
 [dependencies]
 bevy.workspace = true
-bevy_flycam ={ git = "https://github.com/etam/bevy_flycam.git", branch = "bevy_0.11" }
+bevy_flycam = { git = "https://github.com/sburris0/bevy_flycam" }

@@ -17,10 +17,11 @@ path = "src/server.rs"
 
 [dependencies]
 anyhow = "1.0.71"
-axum = { version = "0.6", features = ["headers", "ws"] }
-axum-server = { version = "0.5.1", features = ["tls-rustls"] }
+axum = { version = "0.7", features = ["ws"] }
+axum-extra = { version = "0.9", features = ["typed-header"]}
 bevy.workspace = true 
-bevy-tokio-tasks = { git = "https://github.com/keithsharp/bevy-tokio-tasks.git" }
+# Rev is a PR to update to Bevy 0.13
+bevy-tokio-tasks = { git = "https://github.com/EkardNT/bevy-tokio-tasks.git", rev = "7de4b86bff99dfa4be9bf0921f57060ec1afbce6"}
 crossbeam-channel = "0.5.0"
 futures = "0.3.28"
 rand = "0.8.5"

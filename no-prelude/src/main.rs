@@ -9,13 +9,13 @@ use bevy::ecs::system::Commands;
 use bevy::ecs::system::Query;
 use bevy::ecs::system::Res;
 use bevy::ecs::system::ResMut;
+use bevy::math::primitives::Cuboid;
 use bevy::math::Quat;
 use bevy::math::Vec3;
 use bevy::pbr::DirectionalLightBundle;
 use bevy::pbr::PbrBundle;
 use bevy::pbr::StandardMaterial;
 use bevy::render::color::Color;
-use bevy::render::mesh::shape::Cube;
 use bevy::render::mesh::Mesh;
 use bevy::time::Time;
 use bevy::transform::components::Transform;
@@ -52,7 +52,7 @@ fn setup(
     mut meshes: ResMut<Assets<Mesh>>,
     mut materials: ResMut<Assets<StandardMaterial>>,
 ) {
-    let mesh = meshes.add(Mesh::from(Cube { size: 1. }));
+    let mesh = meshes.add(Mesh::from(Cuboid::new(1.0, 1.0, 1.0)));
     let material = materials.add(StandardMaterial {
         base_color: Color::PINK,
         ..default()

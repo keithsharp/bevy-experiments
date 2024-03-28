@@ -28,9 +28,12 @@ async fn main() -> anyhow::Result<()> {
     let router = Router::new().route("/websocket", get(websocket_upgrade));
 
     info!("Starting WebSocket server listening on: 'http://{}'", HOST);
-    axum::Server::bind(&HOST.parse()?)
-        .serve(router.into_make_service())
-        .await?;
+    // axum::Server::bind(&HOST.parse()?)
+    //     .serve(router.into_make_service())
+    //     .await?;
+
+    let listener = tokio::net::TcpListener::bind(HOST).await?;
+    axum::serve(listener, router).await?;
 
     Ok(())
 }

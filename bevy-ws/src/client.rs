@@ -64,14 +64,14 @@ fn game_system(
         writer.send(event);
     }
 
-    for message in reader.iter() {
+    for message in reader.read() {
         println!("{}", message.0);
     }
 }
 
 // From Bevy event to Crossbeam channel
 fn event_receiver(ws_tx: Res<WebSocketSender>, mut reader: EventReader<OutboundMessage>) {
-    for event in reader.iter() {
+    for event in reader.read() {
         let message = WebSocketMessage::Message(event.0.clone());
         ws_tx
             .send(message.clone())
