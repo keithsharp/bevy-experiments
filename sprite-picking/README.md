@@ -1,0 +1,4 @@
+# Sprite Picking Example
+This crate uses [bevy_mod_picking](https://github.com/aevyrie/bevy_mod_picking) to demonstrate three ways to click on an entity and then get access to the entity's components.  It's heavily based on the [`event_listener.rs`](https://github.com/aevyrie/bevy_mod_picking/blob/main/examples/event_listener.rs) example, but I think it's easier to understand.
+
+The first two methods run the closure and the callback as exclusive systems which means that they cannot be run in parallel with any other systems, so you should be careful not to do too much work in this code  The third method, based on [Bevy Events](https://bevy-cheatbook.github.io/programming/events.html) is the most performant as the system handling as `On::<Pointer<Click>>::send_event::<SpriteClicked>()` returns immediately.  However, be mindful that depending on how you are ordering systems, `clicked_event` might not be called until the next frame.

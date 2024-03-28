@@ -16,13 +16,23 @@ fn main() {
             ..default()
         }))
         .add_plugins(DefaultPickingPlugins)
+        .add_event::<SpriteClicked>()
         .add_systems(Startup, (setup_camera, setup_sprites))
-        // .add_systems(Update, got_clicked)
+        .add_systems(Update, clicked_event)
         .run();
 }
 
 #[derive(Component)]
 struct Name(String);
+
+#[derive(Event)]
+struct SpriteClicked(Entity);
+
+impl From<ListenerInput<Pointer<Click>>> for SpriteClicked {
+    fn from(event: ListenerInput<Pointer<Click>>) -> Self {
+        SpriteClicked(event.target)
+    }
+}
 
 fn setup_sprites(
     mut commands: Commands,
@@ -44,7 +54,7 @@ fn setup_sprites(
 
     commands.spawn((
         Name("Middle".to_string()),
-        On::<Pointer<Click>>::run(got_clicked),
+        On::<Pointer<Click>>::run(clicked_callback),
         MaterialMesh2dBundle {
             mesh: meshes.add(Circle::new(50.0)).into(),
             material: materials.add(Color::RED),
@@ -55,9 +65,7 @@ fn setup_sprites(
 
     commands.spawn((
         Name("Right".to_string()),
-        On::<Pointer<Click>>::target_component_mut::<Name>(|_, name| {
-            info!("You clicked on {}", name.0)
-        }),
+        On::<Pointer<Click>>::send_event::<SpriteClicked>(),
         MaterialMesh2dBundle {
             mesh: meshes.add(Circle::new(50.0)).into(),
             material: materials.add(Color::GREEN),
@@ -67,11 +75,21 @@ fn setup_sprites(
     ));
 }
 
-fn got_clicked(click: Listener<Pointer<Click>>, query: Query<&Name>) {
+fn clicked_callback(click: Listener<Pointer<Click>>, query: Query<&Name>) {
     if let Ok(name) = query.get(click.target()) {
         info!("You clicked on {}", name.0)
     } else {
-        info!("Got click, but no name")
+        info!("Got click, but has no name")
+    }
+}
+
+fn clicked_event(mut events: EventReader<SpriteClicked>, query: Query<&Name>) {
+    for event in events.read() {
+        if let Ok(name) = query.get(event.0) {
+            info!("You clicked on {}", name.0)
+        } else {
+            info!("Got click, but has no name")
+        }
     }
 }
 
