@@ -1,0 +1,12 @@
+[package]
+name = "sprite-picking"
+description = "Using bevy_mod_picking to detect clicks on sprites"
+
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+version.workspace = true
+
+[dependencies]
+bevy.workspace = true
+bevy_mod_picking = "0.18"

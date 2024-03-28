@@ -7,6 +7,7 @@ Experiments using [Rust](https://www.rust-lang.org) and [Bevy](https://bevyengin
 + [`bevy-ws`](https://github.com/keithsharp/bevy-experiments/tree/main/bevy-ws) - talking to a server using WebSockets.
 + [`fly-cam`](https://github.com/keithsharp/bevy-experiments/tree/main/fly-cam) - using the [`bevy-flycam`](https://github.com/sburris0/bevy_flycam) to create a fly camera.
 + [`no-prelude`](https://github.com/keithsharp/bevy-experiments/tree/main/no-prelude) - rotating cube experiment but without using [`use bevy::prelude::*`](https://docs.rs/bevy/latest/bevy/prelude/index.html).
++ [`sprite-picking`](https://github.com/keithsharp/bevy-experiments/tree/main/sprite-picking) - using [bevy_mod_picking](https://github.com/aevyrie/bevy_mod_picking) to detect clicks on sprites.
 
 # Copyright and License
 Copyright 2022, Keith Sharp, kms@passback.co.uk.

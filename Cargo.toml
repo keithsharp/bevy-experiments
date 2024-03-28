@@ -5,7 +5,8 @@ members = [
     "bevy-hello",
     "bevy-ws",
     "fly-cam",
-    "no-prelude"
+    "no-prelude",
+    "sprite-picking"
 ]
 
 [workspace.package]
